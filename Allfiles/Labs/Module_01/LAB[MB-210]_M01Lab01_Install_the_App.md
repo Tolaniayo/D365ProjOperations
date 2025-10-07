@@ -1,105 +1,76 @@
-Module 1: Sales Overview
-========================
+# LAB[PO-101]_M01Lab01_Extend_Sales_to_Project_Opportunity
 
-## Practice Lab 1 – Install the app
+**Module:** 01 — From Sales to Project Operations  
+**Lab Title:** Extending a Sales Opportunity into a Project Opportunity  
+**Estimated time:** 30–45 minutes  
 
-Scenario
---------
+## Lab overview
+In this lab, you’ll start with the Dynamics 365 Sales pipeline (Lead → Opportunity) and extend it to the **Project Operations** lifecycle by converting a Sales Opportunity into a **Project Opportunity** and capturing high-level project attributes.
 
-World Wide Importers (WWI) is looking to formalize their sales process to
-increase revenue and the give leadership stronger forecasting abilities. You are
-a functional consultant configuring Dynamics 365 for Sales for World Wide
-Importers. In this lab, you will install the Sales application and install
-sample data.
+## Learning objectives
+- Create and qualify a **Lead** to an **Opportunity** in Sales.
+- Convert an Opportunity to **Project-based** and complete project fields.
+- Capture early **requirements** and **effort estimates** that flow into a Project Quote.
 
-**Important Note:** This lab will provide you with an actual Dynamics 365 tenant
-and licenses for the Power Platform applications you will be using in this
-course. You will only be provided with one tenant for the practice labs in this
-course. The settings and actions you take within this tenant do not roll-back or
-reset, whereas the virtual machine you are provided with does reset each time
-you close the lab session. Please be aware that Dynamics 365 is evolving all the time. The
-instructions in this document may be different from what you experience in your
-actual Dynamics 365 tenant. It is also possible to experience a delay of several
-minutes before the virtual machine has network connectivity to begin the labs.
+## Prerequisites
+- Access to a **Dynamics 365 Project Operations** environment.
+- App access to **Sales Hub**.
+- Security role: **Salesperson** or **Project Operations Project Manager**.
 
-Exercise 1 - Acquire Tenant Information and Connect
----------------------------------------------------
+## Scenario
+You work for **TopRock Consulting**, a professional services firm. **Contoso Pharma** requested a 2-month ERP implementation. You will capture the lead, qualify it to an opportunity, and extend it to a **Project Opportunity**.
 
-**Note:** If you have already completed a practice recently, the virtual machine
-might pickup where you left off and you will not need to login again.  In that
-case you can skip ahead to exercise two and resume.
+---
 
-### Task 1 – Connect to the Power platform administration portal
+## Exercise 1: Qualify a Lead to an Opportunity
 
-1.  On Virtual machine MB200-Dynamics_Lab, sign in as Admin with the password
-    Pa55w.rd if you are not already logged in.
+### Task 1: Create a lead
+1. Navigate to **Sales Hub → Leads**.  
+2. Select **+ New** and enter:  
+   - **Topic:** ERP Implementation for Contoso Pharma  
+   - **First Name:** Alex  
+   - **Last Name:** Lee  
+   - **Company:** Contoso Pharma  
+   - **Business Phone:** (555) 123-4567  
+3. **Save**.
 
-2.  Outside the VM in the online lab interface click Files and choose D365
-    Credentials. This will allocate an Office 365 tenant for you to use in these
-    labs.  It will display the admin email and password for your tenant.  You
-    should copy this information to notepad or similar for your reference.
+**Validation:** The lead appears in **Open Leads**.
 
-3.  In MB200-Dynamics_Lab launch Microsoft Edge from the taskbar. By default,
-    the browser opens Office 365. Use the O365 credentials you just acquired in
-    the previous step to login.
+### Task 2: Qualify the lead
+1. Open the lead and select **Qualify**.  
+2. Confirm the system created and linked:  
+   - **Account:** Contoso Pharma  
+   - **Contact:** Alex Lee  
+   - **Opportunity** (opens automatically)
 
-4.  Navigate in the browser to the Power platform admin portal at
-    [https://admin.Powerplatform.microsoft.com](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fadmin.Powerplatform.microsoft.com&data=02%7C01%7Cv-juya%40microsoft.com%7C4be5a28c6f1e41eefee808d687ae2dc7%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636845580068684293&sdata=cLrD%2FhTDb5sRbajtFR9RrztfyTDCo0xGS4k8FSxTaIc%3D&reserved=0)
+**Validation:** An **Opportunity** record is open and linked to the Account and Contact.
 
-Exercise 2 – Install Dynamics 365 Sales Application
----------------------------------------------------
+---
 
-In this exercise, you will install the Dynamics 365 Sales Application and then
-install sample data.
+## Exercise 2: Extend Opportunity into a Project Opportunity
 
-### Task 1 – Install Sales Application
+### Task 1: Mark the opportunity as project-based
+1. On the **Opportunity** form, set:  
+   - **Opportunity Type** = **Project-based**  
+   - **Est. Revenue** = **50,000**  
+   - **Est. Close Date** = `+30 days` from today  
+2. Go to the **Project Information** tab. Complete:  
+   - **Project Name:** Contoso ERP Implementation  
+   - **Project Manager:** _Your user_  
+   - **Est. Effort (hours):** 320  
 
-1.  Navigate to <https://admin.powerplatform.microsoft.com>
+**Validation:** The Opportunity now shows **Project Information** fields and is flagged **Project-based**.
 
-2.  Expand **Admin Center** and click **Dynamics 365**.
+### Task 2: Capture initial requirements
+1. In **Timeline / Notes**, add:  
+   - 2-month ERP implementation  
+   - Finance modules in-scope  
+   - Go-live by end of next quarter  
+2. **Save** the Opportunity.
 
-3.  Select the check box for: **None of these. Don’t customize my
-    organization.** When it finishes close the window.
+**Validation:** Requirements are saved on the Opportunity’s timeline.
 
-4.  Navigate to <https://admin.powerplatform.microsoft.com>
+---
 
-5.  Expand **Admin Center** and click **Dynamics 365**.
-
-6.  Select your instance and click edit **Solutions**. There are two edit
-    buttons; one for editing the instance and another for managing your
-    solutions, click on the one next to the Solutions.
-
-7.  Locate and select **Dynamics 365 Sales Application**.
-
-8.  Click **Install**.
-
-9.  Read the terms of service and click **Install**.
-
-10. Wait for the installation to complete. The status column will change to
-    Installed when completed. This may take several minutes to complete.
-
-### Task 2 – Install Sample Data
-
-The Dynamics 365 Sales Application installation must complete before starting
-this task.
-
-1.  Navigate to <https://admin.powerplatform.microsoft.com>
-
-2.  Expand **Admin Center** and click **Dynamics 365**.
-
-3.  Select your instance and click **Open**.
-
-4.  Navigate to **Settings** and select **Data Management**.
-
-5.  Click **Sample Data**.
-
-6.  Click **Install Sample Data**.
-
-7.  Wait for the sample data installation to start and click **Close**. The
-    sample data installation process will run in the background for a few
-    minutes before you will see results.
-
-8.  Navigate to **Sales** and select **Dashboards**.
-
-9.  Your dashboard should now show some data. You may have to refresh the page
-    before you can see the data.
+## Results
+You created and qualified a lead, extended an Opportunity into a **Project Opportunity**, and captured early project details that will feed the **Project Quote** in the next lab.
